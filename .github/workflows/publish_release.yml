@@ -1,7 +1,14 @@
 name: Generate Release Notes and Upload Production to Azure
 
 on:
+
   workflow_dispatch:
+    inputs:
+      environment:
+        description: "Environment to deploy or test"
+        required: true
+        default: "staging"
+
 
 permissions:
   contents: write
