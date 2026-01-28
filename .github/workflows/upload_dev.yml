@@ -1,7 +1,7 @@
 name: Upload Dev zip
 
 on:
-  push:
+  workflow_dispatch:
     branches:
       - dev
 
