@@ -1,7 +1,7 @@
 name: Generate Release Notes and Upload Production to Azure
 
 on:
-  push:
+  workflow_dispatch:
     branches:
       - master
 
