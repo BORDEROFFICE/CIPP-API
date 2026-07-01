@@ -1,0 +1,30 @@
+# Docs for the Azure Functions Deploy action: https://github.com/Azure/functions-action
+# Deploys the production CIPP API backend for Border Office.
+
+name: Build and deploy Powershell project to Azure Function App - cipp5clxw
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+env:
+  AZURE_FUNCTIONAPP_PACKAGE_PATH: '.'
+
+jobs:
+  deploy:
+    runs-on: windows-latest
+
+    steps:
+      - name: 'Checkout GitHub Action'
+        uses: actions/checkout@v4
+
+      - name: 'Run Azure Functions Action'
+        uses: Azure/functions-action@v1
+        id: fa
+        with:
+          app-name: 'cipp5clxw'
+          slot-name: 'Production'
+          package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_CIPP5CLXW }}
